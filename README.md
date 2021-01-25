@@ -10,3 +10,9 @@ Features include:
 - Withdraw funds in proper bill denominations from bank account via ATMs
 - Transfer funds between bank accounts
 - Spend funds via credit card, debit card, or cash
+
+
+Employed design patterns include:
+- Strategy Pattern
+- Observer Pattern
+- Chain of Responsibility Pattern
