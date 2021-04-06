@@ -1,3 +1,4 @@
+package code;
 // Eric Zimmer, Laurence Madsen
 // eric.zimmer@mymail.champlain.edu, laurence.madsen@mymail.champlain.edu
 // Final Project

@@ -1,3 +1,4 @@
+package code;
 // Eric Zimmer, Laurence Madsen
 // eric.zimmer@mymail.champlain.edu, laurence.madsen@mymail.champlain.edu
 // Final Project
@@ -35,5 +36,11 @@ public class CreditCard implements PaymentMethods {
 	// View debt on card
 	public void viewDebt() {
 		System.out.println("Debt owed on credit card: $" + debt);
+	}
+	
+	
+	// Return debt on card
+	public int getDebt() {
+		return debt;
 	}
 }
