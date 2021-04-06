@@ -12,6 +12,7 @@ public abstract class BankAccount {
 	protected int accountID;
 	protected int balance;
 	public ArrayList<Observer> observers; // List of associated ATMs
+	public ArrayList<String> transactions; // List of transaction events
 	
 	
 	//  Default Constructor
@@ -19,6 +20,7 @@ public abstract class BankAccount {
 		accountID = -1;
 		balance = 0;
 		observers = new ArrayList<Observer>();
+		transactions = new ArrayList<String>();
 	}
 	
 	
@@ -27,6 +29,7 @@ public abstract class BankAccount {
 		this.accountID = accountId;
 		this.balance = balance;
 		observers = new ArrayList<Observer>();
+		transactions = new ArrayList<String>();
 	}
 	
 	
@@ -66,6 +69,7 @@ public abstract class BankAccount {
 	// Deposits a designated sum of money
 	public void deposit(int amount, String location) {
 		balance += amount;
+		this.logTransaction("DEPOSIT: received " + amount + ".");
 		System.out.println("Deposit of $" + amount + " was successful from a " + location + " ATM to account with ID: " + accountID + "!");
 		notifyObservers();
 	}
@@ -82,6 +86,8 @@ public abstract class BankAccount {
 		if (amount <= account1.balance) { // Ensure valid request
 			account1.balance -= amount;
 			account2.balance += amount;
+			account1.logTransaction("TRANSFER: sent " + amount + " to another account.");
+			account2.logTransaction("TRANSFER: received " + amount + " from another account.");
 			account1.notifyObservers();
 			account2.notifyObservers();
 			System.out.println("Transfer of $" + amount + " was successful:");
@@ -91,5 +97,17 @@ public abstract class BankAccount {
 		else { // Attempt to overdraw
 			System.out.println("Insufficient funds in sender account to perform a funds transfer. Transaction cancelled.");
 		}
+	}
+	
+	
+	// Returns current transaction log
+	public ArrayList<String> getTransactionLog() {
+		return transactions;
+	}
+	
+	
+	// Add to transaction log 
+	public void logTransaction(String content) {
+		this.transactions.add(content);
 	}
 }

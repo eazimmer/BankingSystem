@@ -14,11 +14,18 @@ public class SavingsAccount extends BankAccount{
     }
 	
 	
+	// Get current interest rate
+	public int getInterestRate() {
+		return interestpercentage;
+	}
+	
+	
 	// Earn interest on account balance
 	public void earnInterest() {
 		double interest = (interestpercentage * balance)/100;
 		System.out.println("Savings account with ID: " + accountID + " has earned " + interestpercentage + "% interest on their account with a balance of $" + balance);
 		balance = (int) (balance + interest);
+		this.logTransaction("INTEREST: received " + interest + " in profit from accruing interest.");
 		notifyObservers();
 	}
 }

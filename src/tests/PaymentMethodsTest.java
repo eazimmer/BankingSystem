@@ -27,4 +27,22 @@ class PaymentMethodsTest {
 		creditcard.charge(750);
 		assertEquals(750, creditcard.getDebt());
 	}
+	
+	
+	@Test
+	void testBitcoinCashPayment() {
+		Bitcoin coin = new Bitcoin(1.0);
+		coin.charge(5000);
+		assertEquals(15000, coin.getCashBalance());
+		assertEquals(0.75, coin.getCoinBalance());
+	}
+	
+	
+	@Test
+	void testBitcoinCoinsPayment() {
+		Bitcoin coin = new Bitcoin(1.0);
+		coin.chargeCoins(0.5);
+		assertEquals(10000, coin.getCashBalance());
+		assertEquals(0.5, coin.getCoinBalance());
+	}
 }

@@ -18,6 +18,7 @@ public class CheckingAccount extends BankAccount{
 		if (amount <= balance) { // Ensure valid withdraw request
 			balance -= amount;
 			System.out.println("Withdraw request of $" + amount + " successfully received from a " + location + " ATM!\n");
+			this.logTransaction("WITHDRAW: withdrew " + amount + " from the account.");
 			notifyObservers();
 			atmDispenser.c1.dispense(new Currency(amount));
 		}
